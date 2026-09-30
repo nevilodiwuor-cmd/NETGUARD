@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NetGuard</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span class="logo-icon">N</span>
+
+            <div>
+                <h2>NetGuard</h2>
+                <p>Infrastructure Monitor</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#" class="nav-link active">Dashboard</a>
+
+            <a href="#monitoring" class="nav-link">
+                Monitoring
+            </a>
+
+            <a href="#alerts" id="navAlerts" class="nav-link">
+                Alerts
+                <span id="navAlertBadge" class="nav-badge" hidden>0</span>
+            </a>
+
+            <a href="#incidentHistory" id="navHistory" class="nav-link">
+                History
+            </a>
+        </nav>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+
+            <div>
+                <strong>System Online</strong>
+                <small>Monitoring active</small>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <p class="eyebrow">NETWORK OPERATIONS</p>
+                <h1>Infrastructure Dashboard</h1>
+            </div>
+
+            <div class="site-selector">
+                <span>Monitoring Site</span>
+                <strong>Mombasa-01</strong>
+            </div>
+
+        </header>
+
+
+        <!-- OVERVIEW -->
+        <section class="overview">
+
+            <div>
+                <p class="section-label">SYSTEM STATUS</p>
+
+                <div class="overall-status">
+
+                    <span id="overallDot" class="big-status-dot"></span>
+
+                    <div>
+                        <h2 id="overallStatus">NORMAL</h2>
+
+                        <p id="overallMessage">
+                            All monitored systems are operating normally.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="health-score">
+                <span>Infrastructure Reliability</span>
+                <strong id="healthScore">100%</strong>
+            </div>
+
+        </section>
+
+
+        <!-- RELIABILITY -->
+        <section class="reliability-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="card-label">INFRASTRUCTURE RELIABILITY</span>
+                    <h2>Reliability Score</h2>
+                </div>
+
+            </div>
+
+            <div class="reliability-body">
+
+                <div class="reliability-gauge">
+
+                    <div
+                        id="reliabilityRing"
+                        class="reliability-ring excellent"
+                        style="--score:100;"
+                    >
+
+                        <div class="reliability-ring-inner">
+                            <strong id="reliabilityScore">100%</strong>
+                            <span id="reliabilityLabel">Excellent</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reliability-breakdown">
+
+                    <div class="reliability-row">
+
+                        <div class="reliability-row-top">
+
+                            <div>
+                                <span class="reliability-name">
+                                    Power Reliability
+                                </span>
+
+                                <small id="relPowerDetail">
+                                    Grid power normal
+                                </small>
+                            </div>
+
+                            <strong id="relPowerValue">100%</strong>
+
+                        </div>
+
+                        <div class="reliability-bar">
+                            <div id="relPowerBar"
+                                 class="reliability-bar-fill excellent">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reliability-row">
+
+                        <div class="reliability-row-top">
+
+                            <div>
+                                <span class="reliability-name">
+                                    Battery Condition
+                                </span>
+
+                                <small id="relBatteryDetail">
+                                    91% charge
+                                </small>
+                            </div>
+
+                            <strong id="relBatteryValue">100%</strong>
+
+                        </div>
+
+                        <div class="reliability-bar">
+                            <div id="relBatteryBar"
+                                 class="reliability-bar-fill excellent">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reliability-row">
+
+                        <div class="reliability-row-top">
+
+                            <div>
+                                <span class="reliability-name">
+                                    Temperature
+                                </span>
+
+                                <small id="relTemperatureDetail">
+                                    34.0°C · Normal
+                                </small>
+                            </div>
+
+                            <strong id="relTemperatureValue">100%</strong>
+
+                        </div>
+
+                        <div class="reliability-bar">
+                            <div id="relTemperatureBar"
+                                 class="reliability-bar-fill excellent">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reliability-row">
+
+                        <div class="reliability-row-top">
+
+                            <div>
+                                <span class="reliability-name">
+                                    Connectivity
+                                </span>
+
+                                <small id="relNetworkDetail">
+                                    98% · Excellent
+                                </small>
+                            </div>
+
+                            <strong id="relNetworkValue">100%</strong>
+
+                        </div>
+
+                        <div class="reliability-bar">
+                            <div id="relNetworkBar"
+                                 class="reliability-bar-fill excellent">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reliability-row">
+
+                        <div class="reliability-row-top">
+
+                            <div>
+                                <span class="reliability-name">
+                                    Fault Status
+                                </span>
+
+                                <small id="relFaultsDetail">
+                                    No active faults
+                                </small>
+                            </div>
+
+                            <strong id="relFaultsValue">100%</strong>
+
+                        </div>
+
+                        <div class="reliability-bar">
+                            <div id="relFaultsBar"
+                                 class="reliability-bar-fill excellent">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reliability-overall">
+                        <span>Overall Reliability</span>
+                        <strong id="reliabilityOverall">100%</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="reliability-footer">
+
+                <span>
+                    Each component carries 20% of the score
+                </span>
+
+                <span id="reliabilityUpdated">
+                    Last updated: Just now
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ALERTS -->
+        <section class="alerts-center" id="alerts">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="card-label">ALERTS CENTER</span>
+                    <h2>Active Alerts</h2>
+                </div>
+
+                <div class="alert-count">
+
+                    <span class="alert-count-label">
+                        ACTIVE ALERTS
+                    </span>
+
+                    <strong id="activeAlertCount"
+                            class="alert-count-number">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="alerts-toolbar">
+
+                <div class="alert-chips">
+
+                    <span class="alert-chip critical">
+                        Critical
+                        <strong id="criticalAlertCount">0</strong>
+                    </span>
+
+                    <span class="alert-chip warning">
+                        Warning
+                        <strong id="warningAlertCount">0</strong>
+                    </span>
+
+                    <span class="alert-chip recovered">
+                        Recovered
+                        <strong id="recoveredAlertCount">0</strong>
+                    </span>
+
+                </div>
+
+                <button id="clearRecoveredAlerts"
+                        class="alerts-clear"
+                        type="button">
+                    Clear recovered
+                </button>
+
+            </div>
+
+
+            <div id="alertsList"
+                 class="alerts-list">
+            </div>
+
+        </section>
+
+
+        <!-- INCIDENT HISTORY -->
+        <section class="history-panel" id="incidentHistory">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="card-label">
+                        INCIDENT MANAGEMENT
+                    </span>
+
+                    <h2>Incident History</h2>
+                </div>
+
+                <button id="clearHistory"
+                        class="history-clear"
+                        type="button">
+                    Clear History
+                </button>
+
+            </div>
+
+
+            <div class="history-summary">
+
+                <div class="history-stat">
+                    <span>Total Incidents</span>
+                    <strong id="historyTotalCount">0</strong>
+                </div>
+
+                <div class="history-stat">
+                    <span>Active</span>
+                    <strong id="historyActiveCount">0</strong>
+                </div>
+
+                <div class="history-stat">
+                    <span>Recovered</span>
+                    <strong id="historyRecoveredCount">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="history-table-wrap">
+
+                <table class="history-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>TIME</th>
+                            <th>INCIDENT</th>
+                            <th>SITE</th>
+                            <th>SEVERITY</th>
+                            <th>DURATION</th>
+                            <th>STATUS</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="incidentHistoryList"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- MONITORING -->
+        <section class="monitor-grid" id="monitoring">
+
+            <!-- TEMPERATURE -->
+            <div class="monitor-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="card-label">
+                            TEMPERATURE
+                        </span>
+
+                        <h3 id="temperature">34°C</h3>
+                    </div>
+
+                    <div class="card-icon temperature-icon">
+                        T
+                    </div>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div id="temperatureBar"
+                         class="progress-fill"
+                         style="width:34%;">
+                    </div>
+
+                </div>
+
+
+                <div class="card-footer">
+
+                    <span>
+                        Equipment temperature
+                    </span>
+
+                    <strong id="temperatureStatus">
+                        NORMAL
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- POWER -->
+            <div class="monitor-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="card-label">
+                            POWER
+                        </span>
+
+                        <h3 id="powerStatus">
+                            ONLINE
+                        </h3>
+                    </div>
+
+                    <div class="card-icon power-icon">
+                        ⚡
+                    </div>
+
+                </div>
+
+
+                <div class="power-info">
+
+                    <span>Backup battery</span>
+
+                    <strong id="batteryLevel">
+                        91%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div id="batteryBar"
+                         class="progress-fill"
+                         style="width:91%;">
+                    </div>
+
+                </div>
+
+
+                <div class="card-footer">
+
+                    <span id="powerMessage">
+                        Grid power available
+                    </span>
+
+                    <strong id="powerCondition">
+                        NORMAL
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONNECTIVITY -->
+            <div class="monitor-card connectivity-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="card-label">
+                            CONNECTIVITY
+                        </span>
+
+                        <h3 id="networkStatus">
+                            ONLINE
+                        </h3>
+                    </div>
+
+                    <div class="card-icon network-icon">
+                        P
+                    </div>
+
+                </div>
+
+
+                <div class="network-bars" id="networkBars">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+
+                <div class="network-quality">
+
+                    <div class="network-quality-top">
+
+                        <span>
+                            Connection quality
+                        </span>
+
+                        <strong id="networkQuality">
+                            98%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="network-quality-track">
+
+                        <div id="networkQualityBar"
+                             style="width:98%;">
+                        </div>
+
+                    </div>
+
+
+                    <div class="network-quality-bottom">
+
+                        <span id="networkQualityMessage">
+                            Strong and stable connection
+                        </span>
+
+                        <strong id="networkImpact">
+                            Minimal impact
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card-footer">
+
+                    <span>
+                        Customer connectivity
+                    </span>
+
+                    <strong id="networkCondition">
+                        EXCELLENT
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DASHBOARD -->
+        <section class="dashboard-grid">
+
+            <!-- CHART -->
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="card-label">
+                            LIVE MONITORING
+                        </span>
+
+                        <h2>Temperature Trend</h2>
+                    </div>
+
+                    <span class="live-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div class="temperature-chart">
+
+                    <div class="chart-values">
+                        <span>60°C</span>
+                        <span>50°C</span>
+                        <span>40°C</span>
+                        <span>30°C</span>
+                    </div>
+
+
+                    <div class="chart-area"
+                         id="temperatureChart">
+
+                        <div class="threshold-line warning-line">
+                            <span>WARNING 45°C</span>
+                        </div>
+
+                        <div class="threshold-line critical-line">
+                            <span>CRITICAL 55°C</span>
+                        </div>
+
+                        <div class="chart-line"
+                             id="chartLine">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-footer">
+
+                    <span>Live readings</span>
+
+                    <strong id="trendMessage">
+                        Temperature stable
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- EVENTS -->
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="card-label">
+                            ACTIVITY
+                        </span>
+
+                        <h2>Recent Events</h2>
+                    </div>
+
+                    <button id="clearEvents">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div id="eventList"
+                     class="event-list">
+
+                    <div class="event">
+
+                        <span class="event-icon success">
+                            ✓
+                        </span>
+
+                        <div>
+                            <strong>System online</strong>
+                            <small>Just now</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESPONSE AND RECOVERY -->
+        <section class="recovery-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="card-label">
+                        AUTOMATED RESPONSE
+                    </span>
+
+                    <h2>Response & Recovery</h2>
+                </div>
+
+                <span id="recoveryStatus"
+                      class="recovery-badge normal">
+                    STANDBY
+                </span>
+
+            </div>
+
+
+            <div class="recovery-grid">
+
+                <div class="recovery-card">
+
+                    <span class="recovery-label">
+                        CURRENT RESPONSE
+                    </span>
+
+                    <h3 id="recoveryAction">
+                        System monitoring
+                    </h3>
+
+                    <p id="recoveryDescription">
+                        NetGuard is continuously monitoring
+                        infrastructure conditions.
+                    </p>
+
+                </div>
+
+
+                <div class="recovery-card">
+
+                    <span class="recovery-label">
+                        RECOVERY STATUS
+                    </span>
+
+                    <h3 id="recoveryProgress">
+                        Ready
+                    </h3>
+
+                    <div class="recovery-progress">
+                        <div id="recoveryProgressBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="recovery-card">
+
+                    <span class="recovery-label">
+                        RECOMMENDED ACTION
+                    </span>
+
+                    <h3 id="recommendedAction">
+                        Continue monitoring
+                    </h3>
+
+                    <p id="recommendedDescription">
+                        No immediate intervention required.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SIMULATION -->
+        <section class="simulation">
+
+            <div class="simulation-header">
+
+                <div>
+                    <span class="card-label">
+                        PROTOTYPE MODE
+                    </span>
+
+                    <h2>Fault Simulation</h2>
+
+                    <p>
+                        Use these controls to simulate real
+                        infrastructure conditions.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="simulation-buttons">
+
+                <button id="normalBtn"
+                        class="simulation-btn normal-btn">
+                    Normal System
+                </button>
+
+                <button id="powerBtn"
+                        class="simulation-btn">
+                    Simulate Power Failure
+                </button>
+
+                <button id="restoreGridBtn"
+                        class="simulation-btn restore-btn">
+                    Restore Grid Power
+                </button>
+
+                <button id="heatBtn"
+                        class="simulation-btn">
+                    Simulate Overheating
+                </button>
+
+                <button id="networkBtn"
+                        class="simulation-btn">
+                    Simulate Network Failure
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <p>
+                NetGuard Prototype • Infrastructure Reliability Monitoring
+            </p>
+
+            <p>
+                Prototype Version 1.0
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
